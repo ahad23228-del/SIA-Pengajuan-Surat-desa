@@ -1,0 +1,76 @@
+/* ---- General Styles ---- */
+body {
+    background-color: #f4f7f6; /* Warna latar belakang halaman */
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 500px; /* Batasi lebar formulir agar terlihat bagus di tengah */
+    margin-top: 50px; /* Jarak dari atas */
+    padding: 20px;
+    background-color: #ffffff; /* Latar belakang putih untuk kontainer form */
+    border-radius: 8px; /* Sudut membulat */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+}
+
+/* ---- Header and Navbar Styles ---- */
+.nav-color {
+    background-color: #007bff !important; /* Biru terang untuk Navbar (Primary Bootstrap color) */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.font-brand-color {
+    color: #ffffff !important; /* Teks brand putih */
+    font-size: 1.5rem;
+}
+
+.header h1 {
+    color: #343a40; /* Warna gelap untuk judul */
+    text-align: center;
+    border-bottom: 2px solid #007bff; /* Garis bawah biru */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* ---- Form Element Styles ---- */
+.form-group label {
+    font-weight: 600; /* Label tebal */
+    color: #495057;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus shadow biru */
+}
+
+/* ---- Button Styles ---- */
+.btn-primary.btn-block {
+    margin-top: 15px;
+}
+
+.btn-secondary.btn-block {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* Google Login Button Style */
+.google-login-btn {
+    background-color: #4285f4; /* Warna Google Blue */
+    border-color: #4285f4;
+    color: white;
+    font-weight: bold;
+    display: flex; /* Untuk menyejajarkan ikon dan teks */
+    align-items: center;
+    justify-content: center; /* Untuk memusatkan konten */
+    gap: 10px; /* Jarak antara ikon dan teks */
+    margin-bottom: 20px;
+}
+
+.google-login-btn:hover {
+    background-color: #3367d6; /* Warna Google Blue yang lebih gelap saat di-hover */
+    border-color: #3367d6;
+}
+
+.google-login-btn img {
+    margin-right: 5px;
+}

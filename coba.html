@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIA Pengajuan Surat RT. 04</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+            color: #343a3a; /* Warna teks body diubah menjadi lebih umum (dark grey) */
+        }
+        /* ... (CSS yang sudah ada sebelumnya, saya hanya menampilkan penambahan untuk bagian 'Alur Pengajuan' dan sedikit penyesuaian body color) ... */
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 90%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #007bff;
+        }
+        .navbar .logo img {
+            height: 30px;
+            margin-right: 10px;
+        }
+        .navbar .nav-links a {
+            color: #555;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-links a:hover {
+            color: #007bff;
+        }
+        .navbar .btn-login {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .navbar .btn-login:hover {
+            background-color: #0056b3;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(1, 240, 200, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1500x800/2196F3/FFFFFF?text=Jambi+Village') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 150px 20px 100px;
+            margin-top: 60px; /* Adjust for fixed navbar */
+        }
+        .hero h1 {
+            font-size: 3.2em;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+        .hero .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        .hero .btn:hover {
+            background-color: #0669ea;
+        }
+        .hero .btn-secondary:hover {
+            background-color: white;
+            color: #007bff;
+        }
+
+        .features {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: #f0f2f5;
+        }
+        .features h2 {
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            color: #007bff;
+        }
+        .feature-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        .feature-card i {
+            font-size: 3em;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ----- CSS BARU: ALUR PENGAJUAN (HOW IT WORKS) ----- */
+        .workflow {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: #ffffff; /* Putih agar kontras dengan section sebelumnya */
+        }
+        .workflow h2 {
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            color: #007bff;
+        }
+        .steps {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .step-card {
+            max-width: 250px;
+            text-align: center;
+            position: relative;
+            padding: 20px;
+        }
+        .step-card .number {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0 auto 20px;
+            display: block;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        }
+        .step-card h3 {
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        .step-card p {
+            color: #666;
+        }
+        /* Garis panah (hanya untuk layar besar) */
+        .step-card:not(:last-child)::after {
+            content: "\f061"; /* Font Awesome solid right arrow */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 40px;
+            right: -40px; /* Sesuaikan jarak antar card */
+            color: #ddd;
+            font-size: 1.5em;
+        }
+        /* Menghilangkan panah di layar kecil */
+        @media (max-width: 992px) {
+            .step-card:not(:last-child)::after {
+                content: none;
+            }
+        }
+        /* ------------------------------------------------ */
+
+        .testimonials {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: #f0f2f5; /* Diubah agar kontras dengan section Alur Pengajuan */
+        }
+        .testimonials h2 {
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            color: #007bff;
+        }
+        .testimonial-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .testimonial-card {
+            background-color: #ffffff; /* Diubah agar kontras dengan section Testimoni yang baru */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            width: 450px;
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        .testimonial-card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 3px solid #007bff;
+        }
+        .testimonial-card .content {
+            flex-grow: 1;
+        }
+        .testimonial-card p {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        .testimonial-card .author {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .testimonial-card .author span {
+            font-weight: normal;
+            color: #777;
+            display: block;
+            font-size: 0.9em;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+            font-size: 0.9em;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer .left-section,
+        .footer .right-section {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .footer .social-icons a {
+            color: white;
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .footer .social-icons a:hover {
+            color: #007bff;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .footer .col-sm { /* Sesuaikan untuk konten jam kerja di footer */
+             text-align: center;
+             margin-top: 20px;
+             width: 100%;
+        }
+        .footer h4 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .footer .row p {
+            margin: 0;
+        }
+
+        @media (max-width: 992px) {
+            .navbar .nav-links {
+                /* display: none; */ /* Biarkan untuk saat ini, tetapi sebaiknya gunakan JavaScript untuk toggle */
+            }
+            .navbar {
+                justify-content: space-between;
+            }
+            /* ... (media query lainnya) ... */
+        }
+        /* ... (media query yang sudah ada sebelumnya) ... */
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo SIA Pengajuan Surat" class="rounded" width="35px" height="35px">
+            <span>SIA Pengajuan Surat</span>
+        </div>
+        <div class="nav-links">
+            <a href="#beranda">Beranda</a>
+            <a href="#fitur">Fitur</a>
+            <a href="#alur">Alur Pengajuan</a> <a href="#testimoni">Testimoni</a>
+            <a class="text-decoration-none text-white" href="./registrasi.html"></a>
+            <a href="registrasi.html" href="#login" class="btn-login">Login</a>
+        </div>
+    </nav>
+        
+    <header class="hero" id="beranda">
+        <h1>SISTEM INFORMASI ADMINISTRASI PENGAJUAN SURAT PENGANTAR RT. 04</h1>
+        <p>Permudah Pengurusan Surat Pengantar Anda, Cepat & Efisien!</p>
+        <a href="#" class="btn">AJUKAN SEKARANG</a>
+        <a href="#" class="btn btn-secondary">PELAJARI LEBIH LANJUT</a>
+    </header>
+
+    <section class="features" id="fitur">
+        <h2>Fitur Unggulan</h2>
+        <div class="feature-cards">
+            <div class="feature-card">
+                <i class="fas fa-clock"></i>
+                <h3>Proses Cepat</h3>
+                <p>Pengajuan surat lebih efisien dan singkat</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Akses Mudah</h3>
+                <p>Dapat diakses kapan saja dan di mana saja</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Terjamin Aman</h3>
+                <p>Data Anda tersimpan dengan aman</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="workflow" id="alur">
+        <h2>Alur Pengajuan Surat</h2>
+        <div class="steps">
+            <div class="step-card">
+                <span class="number">1</span>
+                <h3>Login / Registrasi</h3>
+                <p>Masuk ke sistem atau daftar akun baru sebagai warga RT. 04.</p>
+            </div>
+            <div class="step-card">
+                <span class="number">2</span>
+                <h3>Isi Formulir</h3>
+                <p>Pilih jenis surat yang dibutuhkan dan isi data pada formulir pengajuan.</p>
+            </div>
+            <div class="step-card">
+                <span class="number">3</span>
+                <h3>Verifikasi RT</h3>
+                <p>Ketua RT akan memverifikasi dan menyetujui pengajuan surat Anda secara digital.</p>
+            </div>
+            <div class="step-card">
+                <span class="number">4</span>
+                <h3>Surat Siap</h3>
+                <p>Unduh surat pengantar yang sudah disetujui.</p>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials" id="testimoni">
+        <h2>Apa Kata Warga?</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <img src="img/gambar 1.jpg" alt="Foto Bp. Anto" class="rounded" width="100px" height="100px">
+                <div class="content">
+                    <p>"Sistem ini sangat membantu, pengurusan jadi tidak perlu lama lagi. Keren RT 04!"</p>
+                    <div class="author">- Bp. Anto</div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <img src="img/gambar 2.jpg" alt="Foto Ibu Siti" class="rounded" width="100px" height="100px">
+                <div class="content">
+                    <p>"Pengajuanya gampang, bagi yang gaptek seperti saya-pun bisa pakai. Sangat mudah digunakan!"</p>
+                    <div class="author">- Ibu Siti</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="left-section">
+            <p>&copy; 2025 RT.04 Caturkarya, All Reserved.</p>
+        </div>
+        <div class="right-section">
+            <p>Email: info@rt04muarojambi.com</p>
+            <p>Telp: (085311302390)</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="col-sm">
+          <h4 class="font-brand-color">SALES HOURS</h4>
+          <br />
+          <div class="row">
+            <div class="col">
+              <p>Senin - Jumat (08.00 - 14.00)</p>
+              <p>Sabtu (08.00 - 15.00)</p>
+              <p>Minggu (08.00 - 15.30)</p>
+            </div>
+          </div>
+    </footer>
+    </body>
+</html>
